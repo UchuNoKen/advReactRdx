@@ -1,21 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { shallow } from "enzyme";
 import App from "../App";
+import CommentBox from "../CommentBox";
 
 it("shows a comment box", () => {
-  // JSDOM creates a fake div
-  // provides document.xxx object
-  const div = document.createElement("div");
+  const wrapped = shallow(<App />);
 
-  // React sends HTML from component to div
-  // created by JSDOM
-  ReactDOM.render(<App />, div);
-
-  // Looks inside div to see if CommentBox is there
-  // console.log(div.innerHTML);
-  expect(div.innerHTML).toContain("Comment Box");
-
-  // Look at div, find App component and remove
-  // it, performing cleanup
-  ReactDOM.unmountComponentAtNode(div);
+  expect(wrapped.find(CommentBox).length).toEqual(1);
 });
