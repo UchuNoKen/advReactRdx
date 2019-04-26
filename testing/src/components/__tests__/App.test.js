@@ -12,6 +12,8 @@ it("shows a comment box", () => {
   ReactDOM.render(<App />, div);
 
   // Looks inside div to see if CommentBox is there
+  // console.log(div.innerHTML);
+  expect(div.innerHTML).toContain("Comment Box");
 
   // Look at div, find App component and remove
   // it, performing cleanup
